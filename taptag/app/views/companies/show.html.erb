@@ -1,0 +1,13 @@
+<h2><%= @company.name %></h2>
+Email: <%= @company.email %><br />
+Username: <%= @company.username %><br />
+Number of Locations: <%= @company.vendors.count %><br />
+<%= link_to "Add a new location", new_vendor_path %>
+<% if @company.vendors.count > 0 %>
+<h3>Locations: </h3>
+	<ul>
+	<% @company.vendors.each do |vendor| %>
+		<li><%= link_to vendor.name, vendor %></li>
+	<% end %>
+	</ul>
+<% end %>

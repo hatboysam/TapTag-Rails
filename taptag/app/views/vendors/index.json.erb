@@ -1,0 +1,8 @@
+{
+	"vendors" : [
+		<% @vendors[0..-1].each do |vendor| %>
+			<%= render vendor %>,
+		<% end %>
+		<%= render @vendors.last %>
+	]
+}
