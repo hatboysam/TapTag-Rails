@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
 	include SessionsHelper
 
-	before_filter :authenticate
+	before_filter :authenticate, :only => [:show, :index]
 
 	def index
 
