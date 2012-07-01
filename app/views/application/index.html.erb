@@ -1,9 +1,1 @@
 <h1>Hello, welcome to Tapt.ag!</h1>
-
-<% if !signed_in? %>
-	<%= link_to "Sign Up", signup_path %><br />
-	<%= link_to "Sign In", login_path %><br />
-<% else %>
-	<%= link_to "Your Page", current_company %><br />
-	<%= link_to "Log Out", logout_path %>
-<% end %>

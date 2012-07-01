@@ -14,8 +14,10 @@ class CompaniesController < ApplicationController
 	def create
 		@company = Company.new(params[:company])
 		if @company.save
-			render @company
+			flash[:notice] = "Thanks for signing up for Tapt.ag!"
+			redirect_to @company
 		else
+			flash.now[:notice] = "There was an erorr signing up"
 			render :new
 		end
 	end
@@ -27,5 +29,4 @@ class CompaniesController < ApplicationController
 			format.json
 		end	
 	end
-
 end
