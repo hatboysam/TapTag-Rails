@@ -31,4 +31,15 @@ class VendorsController < ApplicationController
 		end	
 	end
 
+	def near
+		@radius = params[:radius]
+		if (@radius.nil?)
+			@radius = 5
+		end
+		@vendors = Vendor.within(params[:radius], :origin => [params[:lat], params[:lng]])
+		respond_to do |format|
+			format.json { render :index }
+		end
+	end
+
 end

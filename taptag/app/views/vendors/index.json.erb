@@ -1,8 +1,10 @@
 {
 	"vendors" : [
-		<% @vendors[0..-1].each do |vendor| %>
-			<%= render vendor %>,
+		<% if (@vendors.count > 0) %>
+			<% @vendors[0..-1].each do |vendor| %>
+				<%= render vendor %>,
+			<% end %>
+			<%= render @vendors.last %>
 		<% end %>
-		<%= render @vendors.last %>
 	]
 }

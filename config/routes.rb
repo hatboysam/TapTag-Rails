@@ -1,14 +1,15 @@
 Taptag::Application.routes.draw do
 
-  resources :companies
-  resources :sessions
-  resources :vendors
-
   root :to => "application#index"
 
   get "signup" => "companies#new", :as => "signup"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
+  get "/vendors/near" => "vendors#near", :as => "/vendors/near"
+  
+  resources :companies
+  resources :sessions
+  resources :vendors
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

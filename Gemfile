@@ -6,13 +6,17 @@ gem 'rails', '3.1.3'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 group :development do
-	gem 'sqlite3'
+	#gem 'sqlite3'
 end
 
 group :production do
-	gem 'pg'
-	gem 'activerecord-postgresql-adapter'
+
 end
+
+#Postgres
+gem 'pg'
+#gem 'postgres'
+gem 'activerecord-postgresql-adapter'
 
 #Twitter Bootstrap
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
