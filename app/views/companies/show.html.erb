@@ -1,8 +1,11 @@
-<h2><%= @company.name %></h2>
-Email: <%= @company.email %><br />
-Username: <%= @company.username %><br />
-Number of Locations: <%= @company.vendors.count %><br />
-<%= link_to "Add a new location", new_vendor_path %>
+<h1><%= @company.name %></h1>
+<hr />
+<h3>Information</h3>
+<ul>
+	<li>Email: <%= @company.email %></li>
+	<li>Username: <%= @company.username %></li>
+	<li>Number of Locations: <%= @company.vendors.count %></li>
+</ul>
 <% if @company.vendors.count > 0 %>
 <h3>Locations: </h3>
 	<ul>
@@ -11,3 +14,5 @@ Number of Locations: <%= @company.vendors.count %><br />
 	<% end %>
 	</ul>
 <% end %>
+<%= link_to "Add a new location", new_vendor_path, :class => :btn %>
+

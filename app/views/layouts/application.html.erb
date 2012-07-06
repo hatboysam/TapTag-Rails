@@ -50,6 +50,13 @@
     </div>
 
     <div class="container-fluid">
+        <!-- Flash Messages -->
+        <% flash.each do |key, value| %>
+          <div class = "alert flash_#{key}">
+            <%= value %>
+          </div>
+        <% end %>
+        <!-- Body -->
       <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav">

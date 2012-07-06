@@ -1,2 +1,7 @@
 <h1><%= @vendor.name %></h1>
-Category: <%= @vendor.category %>
+<hr>
+<ul>
+	<li>Company: <%= link_to @vendor.company.name, @vendor.company %></li> 	
+	<li>Category: <%= @vendor.category %></li>
+	<li><%= link_to "Vendors Within 10 Miles (JSON)", :controller => :vendors, :action => :near, :format => :json, :lat => @vendor.lat, :lng => @vendor.lng, :radius => 10 %></li>
+</ul>

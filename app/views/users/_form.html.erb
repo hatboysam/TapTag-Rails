@@ -1,0 +1,29 @@
+<%= form_for(@user) do |f| %>
+
+	<% if @user.errors.any? %>
+		<div class = "alert" >
+			Error!
+		</div>
+	<% end %>
+
+	<div class="field">
+		<%= f.label :first %>
+		<%= f.text_field :first %>
+	</div>
+	<div class="field">
+		<%= f.label :last %>
+		<%= f.text_field :last %>	
+	</div>
+	<div class="field">
+		<%= f.label :email %>
+		<%= f.text_field :email %>	
+	</div>
+	<div class="field">
+		<%= f.label :facebook %>
+		<%= f.text_field :facebook %>	
+	</div>
+    <div class="actions">
+    	<%= f.submit %>
+    </div>
+	
+<% end %>
