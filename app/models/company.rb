@@ -16,6 +16,9 @@ class Company < ActiveRecord::Base
 	has_secure_password
 
 	has_many :vendors
+	has_many :taps
+	has_many :rewards
+	has_many :users, :through => :taps
 
 	validates :password, presence: true, length: { minimum: 6 } 
 	validates :password_confirmation, presence: true

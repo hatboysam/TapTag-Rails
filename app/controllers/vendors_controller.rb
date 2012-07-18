@@ -1,4 +1,7 @@
 class VendorsController < ApplicationController
+
+	#before_filter :http_authenticate
+
 	def new
 		@vendor = Vendor.new
 	end
@@ -38,7 +41,7 @@ class VendorsController < ApplicationController
 		end
 		@vendors = Vendor.within(params[:radius], :origin => [params[:lat], params[:lng]])
 		respond_to do |format|
-			format.json { render :index }
+			format.json
 		end
 	end
 

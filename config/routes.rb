@@ -5,11 +5,18 @@ Taptag::Application.routes.draw do
   get "signup" => "companies#new", :as => "signup"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
-  get "/vendors/near" => "vendors#near", :as => "/vendors/near"
+  get "json_error" => "application#json_error", :as => "json_error"
+
+  post "vendors" => "vendors#index"
   
   resources :companies
   resources :sessions
-  resources :vendors
+  resources :vendors do
+    get 'near', :on => :collection
+  end
+
+  resources :rewards
+
   resources :users
   
   # The priority is based upon order of creation:

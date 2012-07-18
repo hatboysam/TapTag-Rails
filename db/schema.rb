@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120710035048) do
+ActiveRecord::Schema.define(:version => 20120717035105) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -31,6 +31,9 @@ ActiveRecord::Schema.define(:version => 20120710035048) do
     t.boolean  "repeats"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "company_id"
+    t.string   "name"
+    t.string   "description"
   end
 
   create_table "taps", :force => true do |t|

@@ -23,6 +23,8 @@ class Vendor < ActiveRecord::Base
 	acts_as_mappable
 	#Relations
 	belongs_to :company
+	has_many :taps
+	has_many :users, :through => :taps
 
 	#Methods
 	def addressToString

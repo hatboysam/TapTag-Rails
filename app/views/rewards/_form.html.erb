@@ -1,0 +1,35 @@
+<%= form_for(@reward) do |f| %>
+	<% if @reward.errors.any? %>
+		<div id="error_explanation" >
+			Error!
+		</div>
+	<% end %>
+
+	<div class="field">
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+		<%= f.label :description %>
+		<%= f.text_field :description%>
+	</div>
+	<div class="field">
+		<%= f.label :taps_needed %>
+		<%= f.select :actions_needed, (1..100) %>
+	</div>
+		<div class="field">
+		<%= f.label :start_date %>
+		<%= f.date_select :start_date %>
+	</div>
+	<div class="field">
+		<%= f.label :end_date %>
+		<%= f.date_select :end_date %>
+	</div>
+	<div class="field">
+		<%= f.label :repeats %>
+		<%= f.check_box :repeats %>
+	</div>
+	<div class="actions">
+    	<%= f.submit %>
+    </div>
+<% end %>

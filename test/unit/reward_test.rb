@@ -11,6 +11,9 @@
 #  repeats        :boolean
 #  created_at     :datetime
 #  updated_at     :datetime
+#  company_id     :integer
+#  name           :string(255)
+#  description    :string(255)
 #
 
 require 'test_helper'

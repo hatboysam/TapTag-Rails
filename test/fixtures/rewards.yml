@@ -11,6 +11,9 @@
 #  repeats        :boolean
 #  created_at     :datetime
 #  updated_at     :datetime
+#  company_id     :integer
+#  name           :string(255)
+#  description    :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
