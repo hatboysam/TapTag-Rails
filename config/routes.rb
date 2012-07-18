@@ -6,11 +6,10 @@ Taptag::Application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "json_error" => "application#json_error", :as => "json_error"
-
-  post "vendors" => "vendors#index"
   
   resources :companies
-  resources :sessions
+  resources :session
+  resources :vendors
   resources :vendors do
     get 'near', :on => :collection
   end

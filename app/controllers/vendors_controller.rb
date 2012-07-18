@@ -1,7 +1,5 @@
 class VendorsController < ApplicationController
 
-	#before_filter :http_authenticate
-
 	def new
 		@vendor = Vendor.new
 	end
