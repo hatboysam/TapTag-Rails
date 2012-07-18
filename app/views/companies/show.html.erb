@@ -1,30 +1,52 @@
 <h1><%= @company.name %></h1>
-<hr />
-<h3>Information</h3>
-<ul>
-	<li>Email: <%= @company.email %></li>
-	<li>Username: <%= @company.username %></li>
+<br />
+<!-- Tab Declarations -->
+<ul class ="nav nav-tabs">
+	<li class="active">
+		<a href="#data" data-toggle="tab">
+			Data
+		</a>
+	</li>
+	<li>
+		<a href="#locations" data-toggle="tab">
+			Locations
+		</a>
+	</li>
+	<li>
+		<a href="#rewards" data-toggle="tab">
+			Rewards
+		</a>
+	</li>
 </ul>
-<% if @company.vendors.count > 0 %>
-<h3>Locations: </h3>
-	<ul>
-	<% @company.vendors.each do |vendor| %>
-		<li><%= link_to vendor.name, vendor %></li>
-	<% end %>
-	</ul>
-<% end %>
-
-<%= link_to "Add a new location", new_vendor_path, :class => :btn %>
-
-<% if @company.rewards.count > 0 %>
-<h3>Rewards: </h3>
-	<ul>
-	<% @company.rewards.each do |reward| %>
-		<li><%= link_to reward.name, reward %></li>
-	<% end %>
-	</ul>
-<% end %>
-
-<%= link_to "Add a new reward", new_reward_path, :class => :btn %>
+<!-- Tab Content -->
+<div class = "tab-content">
+	<div class = "tab-pane pad10 active" id="data">
+		<h3>Nothing to show yet...</h3>
+	</div>
+	<div class = "tab-pane pad10" id="locations">			
+		<% if @company.vendors.any? %>
+			<% @company.vendors.each do |vendor| %>
+				<%= render "vendors/small", :vendor => vendor %>
+			<% end %>
+		<% else %>
+			No Locations yet... add some!
+		<% end %>
+		<p>
+			<%= link_to "Add a new location", new_vendor_path, :class => "btn btn-primary" %>
+		</p>	
+	</div>
+	<div class = "tab-pane pad10" id="rewards">
+		<% if @company.rewards.any? %>
+			<% @company.rewards.each do |reward| %>
+				<%= render "rewards/small", :reward => reward %>
+			<% end %>
+		<% else %>
+			No Rewards yet... add some!
+		<% end %>
+		<p>
+			<%= link_to "Add a new reward", new_reward_path, :class => "btn btn-primary" %>
+		</p>
+	</div>
+</div>
 
 

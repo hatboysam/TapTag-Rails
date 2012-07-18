@@ -61,12 +61,12 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Actions</li>
+              <li class="nav-header">Go To</li>
               <% if !signed_in? %>
                 <li><%= link_to "Sign Up", signup_path %></li>
                 <li><%= link_to "Sign In", login_path %></li>
               <% else %>
-                <li><%= link_to "Company Profile", current_company %></li>
+                <li><%= link_to "My Company", current_company %></li>
                 <li><%= link_to "Log Out", logout_path %></li>
               <% end %>
             </ul>
