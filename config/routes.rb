@@ -8,7 +8,7 @@ Taptag::Application.routes.draw do
   get "json_error" => "application#json_error", :as => "json_error"
   
   resources :companies
-  resources :session
+  resources :sessions
   resources :vendors
   resources :vendors do
     get 'near', :on => :collection

@@ -28,5 +28,27 @@ class Company < ActiveRecord::Base
 	def self.authenticate(email, password)
 		find_by_email(email).try(:authenticate, password)
 	end
+
+	def num_taps_since(timespan)
+		self.taps.where(:date => (Date.today -  timespan)..Date.today).count
+	end
+
+	def num_taps_on(date)
+		self.taps.where(:date => date).count
+	end
+
+	def taps_by_day(num)
+		@a = []
+		#Go "num" days into the past, counting down
+		(num -1).downto(0).each do |num|
+			@a.push(num_taps_on(Date.today - num.days))
+		end
+		@a
+	end
+
+	def total_taps
+		self.taps.count
+	end
+
 	
 end

@@ -13,6 +13,10 @@ group :production do
 
 end
 
+#Data Population
+gem 'populator'
+gem 'faker'
+
 #Postgres
 gem 'pg'
 #gem 'postgres'

@@ -14,6 +14,11 @@
 
     <%= stylesheet_link_tag "application", :media => "all" %>
 
+    <!-- Javascripts ================================================== -->
+    <!-- Placed at the start of the document so the pages load slower -->
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "highcharts" %>
+
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/apple-touch-icon-144x144-precomposed.png">
@@ -83,10 +88,7 @@
 
     </div> <!-- /container -->
 
-    <!-- Javascripts
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "application" %>
+
 
   </body>
 </html>
