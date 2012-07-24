@@ -18,6 +18,20 @@
 
 class Reward < ActiveRecord::Base
 
-	belongs_to :company	
+	belongs_to :company
+
+	def taps_over_time
+		@last_day = [Date.today, end_date].min
+		self.company.taps_in_range(start_date, @last_day)
+	end
+
+	def num_days_running
+		@last_day = [Date.today, end_date].min
+		(@last_day - start_date).to_i
+	end
+
+	def total_taps
+		self.company.num_taps_between(start_date, end_date)
+	end	
 
 end

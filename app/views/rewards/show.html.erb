@@ -4,16 +4,11 @@
 		<small><%= @reward.description %></small>
 	</h1>
 </div>
-<h3>More Details: </h3>
-<div>Starts: 
-	<span class="badge badge-default">
-		<%= @reward.start_date %>
-	</span>
-</div>
-<div>Ends: 
-	<span class="badge badge-default">
-		<%= @reward.end_date %>
-	</span>
+<h3>Reward Details: </h3>
+<div>Dates:
+	<span>
+		<%= "#{@reward.start_date} to #{@reward.end_date}"%>
+	</span> 
 </div>
 <div>Taps to Earn: 
 	<span class="badge badge-info">
@@ -21,14 +16,44 @@
 	</span>
 </div>
 <div>
-	Repeats: 
 	<% if @reward.repeats %>
 		<span class="badge badge-success">
-			Yes
+			Repeating
 		</span>
 	<% else %>
 		<span class="badge badge-important">
-			No
+			Not Repeating
 		</span>
 	<% end %>
 </div>
+<br />
+<h3>Analytics: </h3>
+<div>
+	Total Taps:
+	<span class="badge badge-info">
+		<%= @reward.total_taps %>
+	</span>
+</div>
+<div id = "reward-chart" style="width:600px; height: 300px;"></div>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		new Highcharts.Chart({
+			chart: {
+				renderTo: "reward-chart"
+			},
+			title: {
+				text: "Taps Over Time"
+			},
+			xAxis: { type: 'datetime'},
+			yAxis: { 
+				title: {text: 'Taps' }
+			},
+			series: [{
+				name: "Taps",
+				pointInterval: <%= 1.day * 1000 %>,
+				pointStart: <%= (@reward.num_days_running).days.ago.at_midnight.to_i * 1000 %> ,
+				data: <%= @reward.taps_over_time %>
+			}]
+		});
+	});
+</script>
