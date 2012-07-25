@@ -17,7 +17,11 @@
 #  updated_at :datetime
 #
 
+require 'tapstats.rb'
+
 class Vendor < ActiveRecord::Base
+	include TapStats
+
 	#Geokit things
 	include Geokit::Geocoders
 	acts_as_mappable

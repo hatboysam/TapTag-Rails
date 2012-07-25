@@ -13,5 +13,23 @@
 #
 
 class User < ActiveRecord::Base
+
+	has_many :taps
+
+	def progress_on(reward)
+		self.taps.where(:date => reward.start_date..reward.end_date,
+						:company_id => reward.company_id ).count
+	end
+
+	def companies_tapped
+		@company_ids = self.taps.map(&:company_id).uniq
+		@company_ids.map { |id| Company.find(id)}
+
+	end
+
+	def rewards_tapped
+		@rewards = self.companies_tapped.map(&:rewards)[0]
+	end
+
 	
 end

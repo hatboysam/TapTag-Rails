@@ -9,14 +9,15 @@ Taptag::Application.routes.draw do
   
   resources :companies
   resources :sessions
-  resources :vendors
   resources :vendors do
     get 'near', :on => :collection
   end
 
   resources :rewards
 
-  resources :users
+  resources :users do
+    get 'progress', :on => :member
+  end
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

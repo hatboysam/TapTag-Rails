@@ -38,8 +38,10 @@ namespace :db do
 		end
 
 		@userids = User.all.map(&:id)
+		@vendorids = Vendor.all.map(&:id)
 
 		Tap.populate 1500 do |tap|
+			tap.vendor_id = @vendorids
 			tap.company_id = 1
 			tap.user_id = @userids
 			tap.date = (Date.today - 1.years)..Date.today

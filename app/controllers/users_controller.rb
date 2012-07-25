@@ -21,4 +21,12 @@ class UsersController < ApplicationController
 		@users = User.all
 	end
 
+	def progress
+		@user = User.find(params[:id])
+		@rewards_tapped = @user.rewards_tapped
+		respond_to do |format|
+			format.json
+		end
+	end
+
 end

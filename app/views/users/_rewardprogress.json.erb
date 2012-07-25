@@ -1,0 +1,7 @@
+{
+	"id" : <%= reward.id %>,
+	"name" : "<%= reward.name %>",
+	"description" : "<%= reward.description %>",
+	"progress" : <%= user.progress_on(reward) %>,
+	"total" : <%= reward.actions_needed %>
+}
