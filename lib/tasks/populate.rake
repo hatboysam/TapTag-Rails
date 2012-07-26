@@ -11,7 +11,6 @@ namespace :db do
 		Vendor.populate 40 do |vendor|
 			vendor.company_id = 1
 			vendor.name = Faker::Company.name
-			vendor.category = ['Food', 'Entertainment', 'Shopping']
 			vendor.address1 = Faker::Address.street_address
 			vendor.address2 = ""
 			vendor.city = Faker::Address.city

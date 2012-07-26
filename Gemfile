@@ -17,6 +17,9 @@ end
 gem 'populator'
 gem 'faker'
 
+#JSSON
+gem 'jbuilder'
+
 #Postgres
 gem 'pg'
 #gem 'postgres'

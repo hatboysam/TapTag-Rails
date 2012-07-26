@@ -4,7 +4,6 @@
 #
 #  id         :integer          not null, primary key
 #  company_id :integer
-#  category   :string(255)
 #  name       :string(255)
 #  address1   :string(255)
 #  address2   :string(255)
