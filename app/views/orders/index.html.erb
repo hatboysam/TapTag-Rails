@@ -1,0 +1,13 @@
+<div class="page-header">
+	<h1>
+		<%= @vendor.name %><br />
+		<small>
+			All TapTag Orders
+		</small>
+	</h1>
+</div>
+<% @orders.each do |order| %>
+	<div>
+		<%= render order %>
+	</div>
+<% end %>

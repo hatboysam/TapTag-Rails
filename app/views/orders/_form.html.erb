@@ -1,0 +1,6 @@
+<%= form_for(@order) do |f| %>
+	<%= f.hidden_field :vendor_id , :value => @vendor.id %>
+	<%= f.hidden_field :paid, :value => true %>
+	<%= f.hidden_field :completed, :value => false %>
+	<%= f.submit "Order TapTags for this Location", :class => "btn btn-primary" %>
+<% end %>

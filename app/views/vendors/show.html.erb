@@ -6,6 +6,9 @@
 		</small>
 	</h1>
 </div>
+<% if (@vendor.orders.count < 1) %>
+	<%= render "orders/form" %>
+<% end %>
 <h3>Location Stats: </h3>
 <div>
 	Total Taps: 
@@ -38,6 +41,13 @@
 		</script>
 </div>
 <hr />
+<% if (@vendor.orders.count > 0) %>
+	<div>
+		You have already ordered tags for this location, 
+		<%= render "orders/formlink" %> or 
+		<%= link_to "check your order status", vendor_orders_path(@vendor) %>
+	</div>
+<% end %>
 <div>
 	<%= link_to "Places Within 10 Miles (JSON)", :controller => :vendors, :action => :near, :format => :json, :lat => @vendor.lat, :lng => @vendor.lng, :radius => 10 %>
 </div>

@@ -34,6 +34,7 @@ class Company < ActiveRecord::Base
 	has_many :vendors
 	has_many :taps
 	has_many :rewards
+	has_many :orders
 	has_many :users, :through => :taps
 
 	validates :password, presence: true, length: { minimum: 6 } 

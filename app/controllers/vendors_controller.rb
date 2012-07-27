@@ -18,7 +18,8 @@ class VendorsController < ApplicationController
 	end
 
 	def show
-		@vendor = Vendor.find(params[:id])
+		@order = Order.new
+		@vendor = Vendor.find(params[:id], :include => :orders)
 		respond_to do |format|
 			format.html
 			format.json

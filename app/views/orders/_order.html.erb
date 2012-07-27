@@ -1,0 +1,12 @@
+<div>
+	Order on <%= datetime_as_string(order.created_at) %> : 
+	<% if (order.completed) %>
+		<span class="badge badge-success">
+			Shipped
+		</span>
+	<% else %>
+		<span class="badge badge-important">
+			Not Yet Shipped
+		</span>
+	<% end %>	
+</div>

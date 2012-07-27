@@ -10,10 +10,14 @@ Taptag::Application.routes.draw do
   resources :companies
   resources :sessions
   resources :vendors do
-    get 'near', :on => :collection
+    collection do
+      get 'near'
+    end
+    resources :orders
   end
 
   resources :rewards
+  resources :orders
 
   resources :users do
     get 'progress', :on => :member

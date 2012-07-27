@@ -27,6 +27,7 @@ class Vendor < ActiveRecord::Base
 	#Relations
 	belongs_to :company
 	has_many :taps
+	has_many :orders
 	has_many :users, :through => :taps
 
 	#Methods

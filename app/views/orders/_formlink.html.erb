@@ -1,0 +1,6 @@
+<%= form_for(@order, :html => { :style => 'display:inline;' }) do |f| %>
+	<%= f.hidden_field :vendor_id , :value => @vendor.id %>
+	<%= f.hidden_field :paid, :value => true %>
+	<%= f.hidden_field :completed, :value => false %>
+	<%= link_to_submit 'order more' %>
+<% end %>
