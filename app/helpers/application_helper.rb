@@ -5,7 +5,7 @@ module ApplicationHelper
 	end
 
 	def datetime_as_string(datetime)
-		Date.strptime(datetime.to_s, "%Y-%m-%d %H:%M:%S %Z").strftime("%m/%d/%Y")
+		datetime.strftime("%m/%d/%Y")
 	end
 
 end
