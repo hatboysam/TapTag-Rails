@@ -21,8 +21,16 @@ class OrdersController < ApplicationController
 	end
 	
 	def index
-		@vendor = Vendor.find(params[:vendor_id])
-		@orders = @vendor.orders
+		if (params[:vendor_id])
+			@title = Vendor.find(params[:vendor_id]).name
+			@orders = Vendor.find(params[:vendor_id]).orders.all(:include => :vendor)
+		else
+			@title = "All Vendors"
+			@orders = Order.all(:include => :vendor)
+		end
+		respond_to do |format|
+			format.html
+			format.json
+		end
 	end
-
 end

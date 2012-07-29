@@ -8,7 +8,9 @@ Taptag::Application.routes.draw do
   get "json_error" => "application#json_error", :as => "json_error"
   
   resources :companies
+
   resources :sessions
+
   resources :vendors do
     collection do
       get 'near'
@@ -17,7 +19,10 @@ Taptag::Application.routes.draw do
   end
 
   resources :rewards
+
   resources :orders
+
+  resources :taps
 
   resources :users do
     get 'progress', :on => :member
