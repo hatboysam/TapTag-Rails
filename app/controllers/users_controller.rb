@@ -29,4 +29,11 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def visited
+		@vendors = User.find(params[:id]).vendors_visited
+		respond_to do |format|
+			format.json
+		end
+	end
+
 end

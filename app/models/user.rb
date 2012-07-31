@@ -31,5 +31,10 @@ class User < ActiveRecord::Base
 		@rewards = self.companies_tapped.map(&:rewards)[0]
 	end
 
+	def vendors_visited
+		@vendor_ids = self.taps.map(&:vendor_id).uniq
+		@vendors = Vendor.where(:id => @vendor_ids)
+	end
+
 	
 end

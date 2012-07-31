@@ -25,7 +25,10 @@ Taptag::Application.routes.draw do
   resources :taps
 
   resources :users do
-    get 'progress', :on => :member
+    member do
+      get 'progress'
+      get 'visited'
+    end
   end
   
   # The priority is based upon order of creation:
