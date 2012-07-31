@@ -23,7 +23,12 @@ class UsersController < ApplicationController
 
 	def progress
 		@user = User.find(params[:id])
-		@rewards_tapped = @user.rewards_tapped
+		@rewards_tapped = []
+		if (params[:company])
+			@rewards_tapped = Company.find(params[:company]).rewards
+		else
+			@rewards_tapped = @user.rewards_tapped
+		end
 		respond_to do |format|
 			format.json
 		end
