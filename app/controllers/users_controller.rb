@@ -41,4 +41,22 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def fetch
+		@user = User.new(params[:user])
+		@found = User.find_by_email(@user.email)
+		@status = "OK"
+		if (@found)
+			@user = @found
+			@status = "FOUND"
+		elsif(@user.save)
+			@status = "CREATED"
+		else
+			@user.id = 0
+			@status = "ERROR"	
+		end
+		respond_to do |format|
+			format.json
+		end
+	end
+
 end

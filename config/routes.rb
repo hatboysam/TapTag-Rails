@@ -29,6 +29,9 @@ Taptag::Application.routes.draw do
       get 'progress'
       get 'visited'
     end
+    collection do
+      post 'fetch'
+    end
   end
   
   # The priority is based upon order of creation:

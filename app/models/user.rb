@@ -16,6 +16,11 @@ class User < ActiveRecord::Base
 
 	has_many :taps
 
+	validates_presence_of :first
+	validates_presence_of :last
+	validates_presence_of :email
+	validates_uniqueness_of :email
+
 	def progress_on(reward)
 		self.taps.where(:date => reward.start_date..reward.end_date,
 						:company_id => reward.company_id ).count
