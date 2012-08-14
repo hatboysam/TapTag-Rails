@@ -6,9 +6,12 @@ class TapsController < ApplicationController
 			@tap.date = Date.today
 		end
 		if (@tap.save)
-			@status = "saved"
+			@status = "CREATED"
 		else
-			@status = "error"
+			@status = "ERROR"
+		end
+		respond_to do |format|
+			format.json
 		end
 	end
 
