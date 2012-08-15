@@ -9,7 +9,8 @@ module TapStats
 	end
 
 	def taps_between(start_day, finish_day)
-		self.taps.where(:tapped_time => start_day..finish_day)
+		#Comparing dates to times, which is why we have to go to 11:59pm
+		self.taps.where(:tapped_time => start_day..(finish_day.next - 1.second))
 	end
 
 	def num_taps_on(date)
