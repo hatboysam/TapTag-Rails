@@ -2,8 +2,8 @@ class TapsController < ApplicationController
 
 	def create
 		@tap = Tap.new(params[:tap])
-		if (@tap.date.nil?)
-			@tap.date = Date.today
+		if (@tap.tapped_time.nil?)
+			@tap.tapped_time = DateTime.now
 		end
 		if (@tap.save)
 			@status = "CREATED"

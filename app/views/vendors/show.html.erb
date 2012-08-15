@@ -34,7 +34,7 @@
 						name: "Taps",
 						pointInterval: <%= 1.day * 1000 %>,
 						pointStart: <%= 6.days.ago.at_midnight.to_i * 1000 %> ,
-						data: <%= @vendor.taps_by_day(7) %>
+						data: <%= @vendor.taps_in_range(6.days.ago.to_date, Date.today) %>
 					}]
 				});
 			});

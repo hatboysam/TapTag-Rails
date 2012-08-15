@@ -28,7 +28,7 @@ namespace :db do
 
 		Reward.populate 10 do |reward|
 			reward.start_date = (Date.today - 1.years)..Date.today
-			reward.end_date = Date.today..(Date.today + 1.years)
+			reward.end_date = (Date.today - 6.months)..(Date.today + 1.years)
 			reward.actions_needed = 5..20
 			reward.repeats = [true, false]
 			reward.company_id = 1
@@ -43,7 +43,7 @@ namespace :db do
 			tap.vendor_id = @vendorids
 			tap.company_id = 1
 			tap.user_id = @userids
-			tap.date = (Date.today - 1.years)..Date.today
+			tap.tapped_time = (DateTime.now - 1.years)..DateTime.now
 		end
 	end
 end

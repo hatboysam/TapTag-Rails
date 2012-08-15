@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
 	validates_uniqueness_of :email
 
 	def progress_on(reward)
-		self.taps.where(:date => reward.start_date..reward.end_date,
+		self.taps.where(:tapped_time => reward.start_date..reward.end_date,
 						:company_id => reward.company_id ).count
 	end
 

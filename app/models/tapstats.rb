@@ -5,26 +5,23 @@ module TapStats
 	end
 
 	def num_taps_between(start_day, finish_day)
-		self.taps.where(:date => start_day..finish_day).count
+		taps_between(start_day, finish_day).count
+	end
+
+	def taps_between(start_day, finish_day)
+		self.taps.where(:tapped_time => start_day..finish_day)
 	end
 
 	def num_taps_on(date)
-		self.taps.where(:date => date).count
-	end
-
-	def taps_by_day(num)
-		@a = []
-		#Go "num" days into the past, counting down
-		(num -1).downto(0).each do |num|
-			@a.push(num_taps_on(Date.today - num.days))
-		end
-		@a
+		self.taps.where(:tapped_time => date).count
 	end
 
 	def taps_in_range(start_day, finish_day)
 		@a = []
+		@all_taps = taps_between(start_day, finish_day)
 		(start_day).upto(finish_day).each do |day|
-			@a.push(num_taps_on(day))
+			#Count all taps that happened on that day
+			@a.push(@all_taps.select{ |x| x.tapped_time.to_date == day}.count)
 		end
 		@a
 	end
