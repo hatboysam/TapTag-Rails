@@ -17,7 +17,7 @@ namespace :db do
 			vendor.state = Faker::Address.us_state_abbr
 			vendor.zip = 10000..99999
 			vendor.lat = 24..49
-			vendor.lng = 66..124
+			vendor.lng = -124..-66
 		end
 
 		User.populate 200 do |user|

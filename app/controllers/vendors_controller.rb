@@ -36,9 +36,9 @@ class VendorsController < ApplicationController
 	def near
 		@radius = params[:radius]
 		if (@radius.nil?)
-			@radius = 5
+			@radius = 10
 		end
-		@vendors = Vendor.within(params[:radius], :origin => [params[:lat], params[:lng]])
+		@vendors = Vendor.within(@radius, :origin => [params[:lat], params[:lng]])
 		respond_to do |format|
 			format.json
 		end
