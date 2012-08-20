@@ -9,6 +9,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  tapped_time :datetime
+#  tapped_date :date
 #
 
 require 'test_helper'

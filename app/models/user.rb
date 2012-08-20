@@ -22,14 +22,26 @@ class User < ActiveRecord::Base
 	validates_uniqueness_of :email
 
 	def progress_on(reward)
-		self.taps.where(:tapped_time => reward.start_date..reward.end_date,
+		self.taps.where(:tapped_date => reward.start_date..reward.end_date,
 						:company_id => reward.company_id ).count
+	end
+
+	def progress_on_mindb(reward, taps)
+		@date_range = (reward.start_date..reward.end_date)
+		taps.select{ |x| ((x.company_id == reward.company_id) && (@date_range.include?(x.tapped_date)))}.count
+	end
+
+	def rewards_tapped_with_company(company_id)
+		if (company_id.nil?)
+			return self.rewards_tapped
+		else
+			return Company.find(params[:company]).rewards
+		end
 	end
 
 	def companies_tapped
 		@company_ids = self.taps.map(&:company_id).uniq
 		@company_ids.map { |id| Company.find(id)}
-
 	end
 
 	def rewards_tapped

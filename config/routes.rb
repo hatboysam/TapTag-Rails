@@ -28,6 +28,7 @@ Taptag::Application.routes.draw do
     member do
       get 'progress'
       get 'visited'
+      get 'completed'
     end
     collection do
       post 'fetch'

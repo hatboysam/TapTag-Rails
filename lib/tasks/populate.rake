@@ -7,6 +7,11 @@ namespace :db do
 		@mycompany = Company.find(1)
 
 		[Vendor, User, Reward, Tap].each(&:delete_all)
+		ActiveRecord::Base.connection.execute('ALTER SEQUENCE vendors_id_seq RESTART WITH 1')
+		ActiveRecord::Base.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
+		ActiveRecord::Base.connection.execute('ALTER SEQUENCE rewards_id_seq RESTART WITH 1')
+		ActiveRecord::Base.connection.execute('ALTER SEQUENCE taps_id_seq RESTART WITH 1')
+
 
 		Vendor.populate 40 do |vendor|
 			vendor.company_id = 1
@@ -44,6 +49,7 @@ namespace :db do
 			tap.company_id = 1
 			tap.user_id = @userids
 			tap.tapped_time = (DateTime.now - 1.years)..DateTime.now
+			tap.tapped_date = tap.tapped_time.to_date
 		end
 	end
 end

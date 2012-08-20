@@ -23,15 +23,18 @@ class UsersController < ApplicationController
 
 	def progress
 		@user = User.find(params[:id])
-		@rewards_tapped = []
-		if (params[:company])
-			@rewards_tapped = Company.find(params[:company]).rewards
-		else
-			@rewards_tapped = @user.rewards_tapped
-		end
+		@taps = @user.taps
+		@rewards_tapped = @user.rewards_tapped_with_company(params[:company])
 		respond_to do |format|
 			format.json
 		end
+	end
+
+	def completed
+		@user = User.find(params[:id])
+		@taps = @user.taps
+		@rewards_tapped = @user.rewards_tapped_with_company(params[:company])
+		@rewards_completed = @rewards_tapped.select{ |x| @user.progress_on(x) >= x.actions_needed }
 	end
 
 	def visited
