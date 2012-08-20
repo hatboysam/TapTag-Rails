@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@taps = @user.taps
 		@rewards_tapped = @user.rewards_tapped_with_company(params[:company])
-		@rewards_completed = @rewards_tapped.select{ |x| @user.progress_on(x) >= x.actions_needed }
+		@rewards_completed = @rewards_tapped.select{ |x| @user.progress_on_mindb(x, taps) >= x.actions_needed }
 	end
 
 	def visited
