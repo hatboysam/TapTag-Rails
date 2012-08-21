@@ -27,8 +27,8 @@ class User < ActiveRecord::Base
 	end
 
 	def progress_on_mindb(reward, taps)
-		@date_range = (reward.start_date..reward.end_date)
-		taps.select{ |x| ((x.company_id == reward.company_id) && (@date_range.include?(x.tapped_date)))}.count
+		date_range = (reward.start_date..reward.end_date)
+		taps.select{ |x| ((x.company_id == reward.company_id) && (date_range.include?(x.tapped_date)))}.count
 	end
 
 	def rewards_tapped_with_company(company_id)
@@ -40,17 +40,17 @@ class User < ActiveRecord::Base
 	end
 
 	def companies_tapped
-		@company_ids = self.taps.map(&:company_id).uniq
-		@company_ids.map { |id| Company.find(id)}
+		company_ids = self.taps.map(&:company_id).uniq
+		company_ids.map { |id| Company.find(id)}
 	end
 
 	def rewards_tapped
-		@rewards = self.companies_tapped.map(&:rewards)[0]
+		rewards = self.companies_tapped.map(&:rewards)[0]
 	end
 
 	def vendors_visited
-		@vendor_ids = self.taps.map(&:vendor_id).uniq
-		@vendors = Vendor.where(:id => @vendor_ids)
+		vendor_ids = self.taps.map(&:vendor_id).uniq
+		vendors = Vendor.where(:id => vendor_ids)
 	end
 
 	

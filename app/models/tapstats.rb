@@ -18,13 +18,13 @@ module TapStats
 	end
 
 	def taps_in_range(start_day, finish_day)
-		@a = []
-		@all_taps = taps_between(start_day, finish_day)
+		a = []
+		all_taps = taps_between(start_day, finish_day)
 		(start_day).upto(finish_day).each do |day|
 			#Count all taps that happened on that day
-			@a.push(@all_taps.select{ |x| x.tapped_date == day}.count)
+			a.push(all_taps.select{ |x| x.tapped_date == day}.count)
 		end
-		@a
+		return a
 	end
 
 	def total_taps
