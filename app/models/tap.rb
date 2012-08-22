@@ -11,6 +11,7 @@
 #  tapped_time :datetime
 #  tapped_date :date
 #
+require 'timehelper.rb'
 
 class Tap < ActiveRecord::Base
 
@@ -28,10 +29,6 @@ class Tap < ActiveRecord::Base
 
 	def update_tapped_date
 		self.tapped_date = self.tapped_time.to_date
-	end
-
-	def self.unix_to_datetime(unix)
-		Time.at(unix / 1000).to_datetime
 	end
 
 end

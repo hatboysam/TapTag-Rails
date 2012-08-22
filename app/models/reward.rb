@@ -19,6 +19,7 @@
 class Reward < ActiveRecord::Base
 
 	belongs_to :company
+	has_many :redemptions
 
 	def taps_over_time
 		last_day = [Date.today, self.end_date].min

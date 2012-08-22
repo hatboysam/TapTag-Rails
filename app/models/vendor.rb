@@ -29,6 +29,7 @@ class Vendor < ActiveRecord::Base
 	has_many :taps
 	has_many :orders
 	has_many :users, :through => :taps
+	has_many :redemptions
 
 	#Methods
 	def addressToString

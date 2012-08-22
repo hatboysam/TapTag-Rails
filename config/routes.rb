@@ -24,6 +24,8 @@ Taptag::Application.routes.draw do
 
   resources :taps
 
+  resources :redemptions
+
   resources :users do
     member do
       get 'progress'

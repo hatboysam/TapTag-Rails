@@ -1,4 +1,5 @@
 json.id reward.id
+json.company_id reward.company_id
 json.name reward.name
 json.description reward.description
 json.progress user.progress_on_mindb(reward, taps)

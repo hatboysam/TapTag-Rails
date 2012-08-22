@@ -15,6 +15,7 @@
 class User < ActiveRecord::Base
 
 	has_many :taps
+	has_many :redemptions
 
 	validates_presence_of :first
 	validates_presence_of :last
