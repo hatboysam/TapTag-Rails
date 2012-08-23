@@ -1,3 +1,5 @@
+require 'timehelper.rb'
+
 class RedemptionsController < ApplicationController
 
 	def new
@@ -11,11 +13,10 @@ class RedemptionsController < ApplicationController
 			params[:redemption][:redeemed_date] = TimeHelper.unix_to_date(redeemed_date)
 		end
 		@redemption = Redemption.new(params[:redemption])
+		@status = "ERROR"
 		if @redemption.save
 			@status = "CREATED"
 		else
-			@status = "ERROR"
-		end
 
 		respond_to do |format|
 			format.json
