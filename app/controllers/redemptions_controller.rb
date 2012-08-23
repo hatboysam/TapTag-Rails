@@ -10,7 +10,7 @@ class RedemptionsController < ApplicationController
 		#Parse Date from UNIX Timestamp
 		if (!params[:redemption][:redeemed_date].nil?)
 			redeemed_date = params[:redemption][:redeemed_date]
-			params[:redemption][:redeemed_date] = TimeHelper.unix_to_date(redeemed_date)
+			params[:redemption][:redeemed_date] = TimeHelper::Unix.unix_to_date(redeemed_date)
 		end
 		@redemption = Redemption.new(params[:redemption])
 		@status = "ERROR"

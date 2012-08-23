@@ -6,7 +6,7 @@ class TapsController < ApplicationController
 		#Parse DateTime from UNIX Timestamp
 		if (!params[:tap][:tapped_time].nil?)
 			tapped_time = params[:tap][:tapped_time]
-			params[:tap][:tapped_time] = TimeHelper.unix_to_datetime(tapped_time)
+			params[:tap][:tapped_time] = TimeHelper::Unix.unix_to_datetime(tapped_time)
 		end
 		@tap = Tap.new(params[:tap])
 		if (@tap.save)
