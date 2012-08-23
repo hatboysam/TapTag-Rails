@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 	def progress
 		@user = User.find(params[:id])
 		@taps = @user.taps
+		@redemptions = @user.redemptions
 		@rewards_tapped = @user.rewards_tapped_with_company(params[:company])
 		respond_to do |format|
 			format.json
@@ -33,8 +34,14 @@ class UsersController < ApplicationController
 	def completed
 		@user = User.find(params[:id])
 		@taps = @user.taps
+		@redemptions = @user.redemptions
 		@rewards_tapped = @user.rewards_tapped_with_company(params[:company])
-		@rewards_completed = @rewards_tapped.select{ |x| @user.progress_on_mindb(x, @taps) >= x.actions_needed }
+		@rewards_completed = @rewards_tapped.select{ |x| @user.progress_on_mindb(x, @taps, @redemptions) >= x.actions_needed }
+	end
+
+	def redeemed
+		@user = User.find(params[:id])
+		@rewards = @user.redemptions.map(&:reward)
 	end
 
 	def visited
