@@ -16,7 +16,7 @@ class RedemptionsController < ApplicationController
 		@status = "ERROR"
 		if @redemption.save
 			@status = "CREATED"
-		else
+		end
 
 		respond_to do |format|
 			format.json
